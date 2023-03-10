@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnbdskei1b1es"]
+
+[ext_resource type="Script" path="res://data/player/state_manager/StateManager.gd" id="1_0b2dn"]
+[ext_resource type="Script" path="res://data/player/state_manager/WalkState.gd" id="2_mj1r2"]
+
+[node name="StateManager" type="Node"]
+script = ExtResource("1_0b2dn")
+starting_state = NodePath("WalkState")
+
+[node name="WalkState" type="Node" parent="."]
+script = ExtResource("2_mj1r2")

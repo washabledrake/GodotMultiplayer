@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ic741f0uk110"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gxnxj"]
+
+[sub_resource type="Sky" id="Sky_rb3iq"]
+sky_material = SubResource("ProceduralSkyMaterial_gxnxj")
+
+[sub_resource type="Environment" id="Environment_e414m"]
+background_mode = 2
+sky = SubResource("Sky_rb3iq")
+sdfgi_use_occlusion = true
+
+[node name="TestLevel" type="WorldEnvironment"]
+environment = SubResource("Environment_e414m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.429033, 0.256771, 0, 0.513541, 0.858065, -0.5, 0.743106, -0.44474, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.05, 2.08165e-12)
+size = Vector3(30, 0.1, 30)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69806, 0.5, 2.08165e-12)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://data/player/Player.tscn")
+spawn_path = NodePath("..")

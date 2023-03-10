@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://5dwy4vqq1553"]
+
+[ext_resource type="Script" path="res://data/player/head/Head.gd" id="1_daix5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hulf"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7sg3u"]
+material = SubResource("StandardMaterial3D_2hulf")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+
+[node name="Head" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+script = ExtResource("1_daix5")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 1.14784e-05, -1.36297e-05, -1.36297e-05, 2.99721e-05, -1, -1.14784e-05, 1, 2.99721e-05, 0, 0.451138, -0.16891)
+mesh = SubResource("CylinderMesh_7sg3u")

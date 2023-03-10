@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://n1oo8q4oqgeo"]
+
+[ext_resource type="PackedScene" uid="uid://dqsdl06xvagey" path="res://data/player/character_controller/CharacterController.tscn" id="1_r5m8l"]
+[ext_resource type="Script" path="res://data/player/Player.gd" id="2_sqra6"]
+[ext_resource type="PackedScene" uid="uid://5dwy4vqq1553" path="res://data/player/head/Head.tscn" id="3_apfa0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ymcxw"]
+radius = 0.35
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_peolx"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+
+[node name="Player" instance=ExtResource("1_r5m8l")]
+collision_layer = 2
+script = ExtResource("2_sqra6")
+
+[node name="Mesh" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+mesh = SubResource("CapsuleMesh_ymcxw")
+
+[node name="Head" parent="." index="2" instance=ExtResource("3_apfa0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.64, 2.08165e-12)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="4"]
+replication_config = SubResource("SceneReplicationConfig_peolx")
+
+[editable path="Head"]

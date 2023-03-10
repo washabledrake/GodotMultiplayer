@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://6dx2gc05pwxi"]
+
+[ext_resource type="Script" path="res://data/Game.gd" id="1_gek5h"]
+[ext_resource type="PackedScene" uid="uid://ic741f0uk110" path="res://data/maps/TestLevel.tscn" id="1_nh6uw"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_gek5h")
+
+[node name="TestLevel" parent="." instance=ExtResource("1_nh6uw")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "HOST
+"
+
+[node name="Join" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "JOIN"
+
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]
